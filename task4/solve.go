@@ -1,38 +1,39 @@
+package main
 
 import "unicode"
 
-func RemoveEven(array_input []int) []int {
-    answer := make([]int, 0)
-    for _, answer := range array_input {
-        if curent % 2 == 1 {
-            answer = append(answer, curent)
+func RemoveEven(arr []int) []int {
+    result := make([]int, 0)
+    for _, elem := range arr {
+        if elem % 2 == 1 {
+            result = append(result, elem)
         }
     }
-    return answer
+    return result
 }
 
-func PowerGenerator(input int) func() int {
-    answer := 1
+func PowerGenerator(a int) func() int {
+    x := 1
     return func() int {
-        answer *= input
-        return answer
+        x *= a
+        return x
     }
 }
 
-func DifferentWordsCount(input string) int {
+func DifferentWordsCount(x string) int {
     word := ""
     set := make(map[string]bool)
-    answer := 0
-    for _, i := range (input + " ") {
-        if unicode.IsLetter(i) {
-            word += string(unicode.ToLower(i))
+    ans := 0
+    for _, c := range (x + " ") {
+        if unicode.IsLetter(c) {
+            word += string(unicode.ToLower(c))
         } else if word != "" {
             if !set[word] {
-                answer += 1
+                ans += 1
             }
             set[word] = true
             word = ""
         }
     }
-    return answer
+    return ans
 }
